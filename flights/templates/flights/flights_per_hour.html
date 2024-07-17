@@ -1,0 +1,22 @@
+<!-- flights/templates/flights/flights_per_hour.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flights Per Hour</title>
+</head>
+<body>
+    <h1>Flights Arriving Each Hour</h1>
+    <table>
+        <tr>
+            <th>Hour</th>
+            <th>Flight Count</th>
+        </tr>
+        {% for hour, count in flight_counts %}
+        <tr>
+            <td>{{ hour }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
