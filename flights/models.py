@@ -1,6 +1,7 @@
 # flights/models.py
 from django.db import models
 
+
 class Flight(models.Model):
     departure_time = models.DateTimeField()
     arrival_time = models.DateTimeField()
