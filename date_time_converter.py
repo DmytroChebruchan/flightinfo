@@ -27,9 +27,3 @@ def parse_date_time(date_str: str) -> datetime:
 
     # Parse the datetime string into a datetime object
     return datetime.strptime(datetime_str, "%H:%M %d %b")
-
-
-# Example usage
-date_str = "00:25 10 ИЮЛ"
-parsed_datetime = parse_date_time(date_str)
-print(parsed_datetime)

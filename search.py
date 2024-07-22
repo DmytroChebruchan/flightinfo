@@ -1,7 +1,8 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+
+from date_time_converter import parse_date_time
 
 
 def requests_get():
@@ -39,7 +40,7 @@ def parse_flight_info(row: WebElement) -> dict:
     flight_info = {
         "flight_number": find_element_text(row, ".td"),
         "destination": find_element_text(row, DESTINATION_CLASSES),
-        "scheduled_departure": find_element_text(row, ".sch"),
+        "scheduled_departure": parse_date_time(find_element_text(row, ".sch")),
     }
     return flight_info
 
@@ -59,7 +60,3 @@ def collect_flights_script():
     flights_collected = collecting_flights(cleaned_rows)
 
     return flights_collected
-
-
-if __name__ == "__main__":
-    collect_flights_script()
