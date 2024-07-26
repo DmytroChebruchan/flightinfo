@@ -10,9 +10,12 @@ month_mapping = {
 
 
 def parse_date_time(date_str: str) -> datetime:
+    if date_str == "N/A":
+        return ''
+
     # Split the date_str into time and date parts
     time_str, date_str = date_str.split(maxsplit=1)
-
+    time_str = time_str[:-1]
     # Extract the day and month abbreviation
     day, month_abbr = date_str.split()
 

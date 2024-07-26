@@ -2,21 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flights Per Hour</title>
+    <title>Flights-competitors</title>
 </head>
 <body>
     <h1>Flights Arriving Each Hour</h1>
-    <table>
-        <tr>
-            <th>Hour</th>
-            <th>Flight Count</th>
-        </tr>
-        {% for hour, count in flight_counts %}
-        <tr>
-            <td>{{ hour }}</td>
-            <td>{{ count }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+
+        {% if flight_details %}
+        <h2>Your flight's details</h2>
+        <ul>
+            <li>Number: {{ flight_details.number }}</li>
+            <li>To: {{ flight_details.to }}</li>
+            <li>Date and time: {{ flight_details.datetime }}</li>
+        </ul>
+        {% endif %}
+
+        <p> There are {{ flight_counts }} flights within an hour of your flight.
+        We recommend to come to air point minimum {{ recommended_gap }} prior
+         to your flight</p>
 </body>
 </html>

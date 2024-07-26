@@ -1,16 +1,20 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.firefox.options import Options
 
 from date_time_converter import parse_date_time
 
 
 def requests_get():
-    driver = webdriver.Firefox()
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
     driver.get(
         "https://airport.md/ru/passenger/"
         "online-panel?cheeckin-warn#departures"
     )
+    driver.find_element(By.CSS_SELECTOR, ".swal2-confirm").click()
     # driver.close()
     return driver
 
@@ -22,7 +26,6 @@ def collecting_flights(cleaned_rows):
             flight_info = parse_flight_info(row)
             flights_collected.append(flight_info)
         except:
-            # Do nothing and continue
             pass
 
     # Print all collected flight information
